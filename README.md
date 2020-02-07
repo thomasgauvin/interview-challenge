@@ -1,4 +1,4 @@
-Hi Ben, Hi Justin!
+Hi Ben, Hi Justin, Hi Wendy!
 
 This is my submission for the interview challenge.
 
