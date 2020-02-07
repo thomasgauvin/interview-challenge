@@ -63,39 +63,37 @@ export default function Map(props) {
   const findClosestStopAndSaveAmountOfPassengersForStop = (passenger, stopCoordinates) => {
     const closestStop = findClosestStop(passenger, stopCoordinates);
 
-
     return closestStop;
   }
 
   function displayHoverBox(lon, lat){
-    console.log('display');
-    console.log(x);
-    console.log(y);
     setHoverBoxLon(lon);
     setHoverBoxVisible(true);
   }
 
   function hideDisplayHoverBox(lat, lon){
-    console.log('hide')
     setHoverBoxVisible(false);
   }
 
   return (
-    <ReactMapGL
-      {...viewport}
-      onViewportChange={setViewport}
-      mapboxApiAccessToken={mapboxToken}
-    >
-            
-      {drawLines(props.passengerCoordinates, props.stopCoordinates)}
-      {renderPassengers(props.passengerCoordinates)}
+    <div>
       {hoverBoxVisible && 
         <div className='arrow_box' style={{position: 'absolute', zIndex: 1, top: y-45, left: x-100}}>
             Riders for this stop count: {hoverBoxLon}
         </div>
       }
-      {renderStops(props.stopCoordinates, props.passengerCoordinates)}
+      <ReactMapGL
+        {...viewport}
+        onViewportChange={setViewport}
+        mapboxApiAccessToken={mapboxToken}
+      >
+              
+        {drawLines(props.passengerCoordinates, props.stopCoordinates)}
+        {renderPassengers(props.passengerCoordinates)}
 
-    </ReactMapGL>
+        {renderStops(props.stopCoordinates, props.passengerCoordinates)}
+
+      </ReactMapGL>
+    </div>
   );
 }
